@@ -8,5 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const group = groupHeader.parentElement;
     const groupBody = group.querySelector('.faq-group-body');
     const icon = groupHeader.querySelector('i');
+
+    // toggle icon
+    icon.classList.toggle('fa-plus');
+    icon.classList.toggle('fa-minus');
+
+    // open body
+    if (icon.classList.contains('fa-minus')) {
+      groupBody.classList.add('open');
+    } else {
+      groupBody.classList.remove('open');
+    }
+
+    // close other faq bodies
+    const otherGroups = faqContainer.querySelectorAll('.faq-group');
+    otherGroups.forEach((otherGroup) => {
+      if (otherGroup !== group) {
+        const otherGroupBody = document.querySelector('.faq-group-body');
+        const otherIcon = otherGroup.querySelector('.faq-group-header i');
+        otherGroupBody.classList.remove('open');
+        otherIcon.classList.remove('fa-minus');
+        otherIcon.classList.add('fa-plus');
+      }
+    });
   });
 });
