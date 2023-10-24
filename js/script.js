@@ -13,12 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     icon.classList.toggle('fa-plus');
     icon.classList.toggle('fa-minus');
 
-    // open body
-    if (icon.classList.contains('fa-minus')) {
-      groupBody.classList.add('open');
-    } else {
-      groupBody.classList.remove('open');
-    }
+    // Toggle visibility of body
+    groupBody.classList.toggle('open');
 
     // close other faq bodies
     const otherGroups = faqContainer.querySelectorAll('.faq-group');
@@ -31,5 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         otherIcon.classList.add('fa-plus');
       }
     });
+  });
+
+  document.querySelector('.hamburger-button').addEventListener('click', (e) => {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu.classList.toggle('active');
   });
 });
